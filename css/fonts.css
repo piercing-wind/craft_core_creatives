@@ -1,0 +1,156 @@
+@font-face {
+  font-family: 'Rollbox';
+  src: url('../fonts/rollbox/RollboxThin-ywad5.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Rollbox';
+  src: url('../fonts/rollbox/RollboxThinItalic-lgw1X.ttf') format('truetype');
+  font-weight: 100;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Rollbox';
+  src: url('../fonts/rollbox/RollboxExtraLight-p7PYy.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Rollbox';
+  src: url('../fonts/rollbox/RollboxExtraLightItalic-ALyV6.ttf') format('truetype');
+  font-weight: 200;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Rollbox';
+  src: url('../fonts/rollbox/RollboxLight-VGAXy.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Rollbox';
+  src: url('../fonts/rollbox/RollboxLightItalic-qZLr6.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Rollbox';
+  src: url('../fonts/rollbox/RollboxRegular-jE2lv.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Rollbox';
+  src: url('../fonts/rollbox/RollboxItalic-DOxlE.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Rollbox';
+  src: url('../fonts/rollbox/RollboxMedium-JRxYB.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Rollbox';
+  src: url('../fonts/rollbox/RollboxMediumItalic-GOxRa.ttf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Rollbox';
+  src: url('../fonts/rollbox/RollboxSemiBold-z8EP1.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Rollbox';
+  src: url('../fonts/rollbox/RollboxSemiBoldItalic-51Vez.ttf') format('truetype');
+  font-weight: 600;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Rollbox';
+  src: url('../fonts/rollbox/RollboxBold-OVxvO.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Rollbox';
+  src: url('../fonts/rollbox/RollboxBoldItalic-ZVx0q.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Rollbox';
+  src: url('../fonts/rollbox/RollboxExtraBold-3zV4X.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Rollbox';
+  src: url('../fonts/rollbox/RollboxExtraBoldItalic-x3Wmj.ttf') format('truetype');
+  font-weight: 800;
+  font-style: italic;
+}
+
+/*  */
+/* Optima Regular */
+@font-face {
+  font-family: 'Optima';
+  src: url('../fonts/optima/Optima_Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Optima';
+  src: url('../fonts/optima/Optima Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Optima';
+  src: url('../fonts/optima/OPTIMA.TTF') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Optima';
+  src: url('../fonts/optima/OPTIMA_B.TTF') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Azonix */
+@font-face {
+  font-family: 'Azonix';
+  src: url('../fonts/azonix/Azonix.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Winner Sans Bold */
+@font-face {
+  font-family: 'Winner Sans';
+  src: url('../fonts/winnersansbold/WinnerSans-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+.number {
+  font-family: 'Winner Sans', Arial, sans-serif;
+  -webkit-text-stroke: 1px #fff;   /* White border, adjust color/width as needed */
+  font-weight: bold;
+  color: transparent;
+  /* Create a fading mask from top (opaque) to bottom (transparent) */
+  -webkit-mask-image: linear-gradient(to bottom, #fff 70%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #fff 70%, transparent 100%);
+}
+
+.rollbox {
+   font-family: 'Rollbox', sans-serif !important;
+   font-weight: 400; /* Default weight */
+
+}
+

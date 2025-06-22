@@ -1,0 +1,220 @@
+/* Base Reset Enhancements */
+@import url('fonts.css');
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  background-color: #141414; /* Optional: dark mode look */
+  color: #ffffff;            /* Optional: default light text */
+  font-family: 'Optima', serif; 
+  width: 100%;
+  overflow-x: hidden;
+
+
+ /* -webkit-font-smoothing: antialiased;
+ -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility; */
+}
+p{
+   font-family: 'Rollbox', sans-serif !important;
+   font-weight: 400;
+}
+/* Make media responsive */
+img, video, svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Typography enhancements */
+body {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  margin-bottom: 0.5em;
+  line-height: 1.2;
+}
+
+/* Container helper (if you're not always using Tailwind's `max-w-*`) */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Remove tap highlight color on mobile */
+* {
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box; /* universal box-sizing */
+}
+
+/* Responsive font sizing override */
+@media (max-width: 640px) {
+  body {
+    font-size: 15px;
+  }
+  .container {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    font-size: 17px;
+  }
+}
+
+/* Hide scrollbars (mobile & desktop) */
+body {
+  -ms-overflow-style: none;      /* IE/Edge */
+  scrollbar-width: none;         /* Firefox */
+}
+body::-webkit-scrollbar {
+  display: none;                 /* Chrome/Safari/Opera */
+}
+
+.contact-btn {
+  width: 200px;
+  height: 44px;
+  border-radius: 22px;
+  background: linear-gradient(
+    180deg,
+    #11085d 0%,
+    #0c131c 60%,
+    #050910 100%
+  );
+  color: #fff;
+  border: 1.5px solid #0c1a2e;
+  text-transform: capitalize;
+  font-family: 'Optima', Arial, sans-serif;
+  font-size: 1.15rem;
+  font-weight: 500;
+  box-shadow:
+    0 2px 8px rgba(0,0,0,0.35),
+    0 2px 0 #97aac4 inset,
+    0 -2px 8px #061324 inset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.contact-btn:hover {
+  background: linear-gradient(135deg, #1d1b1b, #0d0d0e); /* lighter on hover */
+  /* transform: scale(1.05); */
+}
+
+
+.text-shadow {
+    text-shadow: 
+    0 0 18px rgba(0, 0, 0, 0.7),
+    0 0 24px rgba(0, 0, 0, 0.6),
+    0 0 30px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(0, 0, 0, 0.4);
+}
+
+
+.fade-right {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    black 0%,
+    black 40%,
+    transparent 70%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    black 0%,
+    black 40%,
+    transparent 70%,
+    transparent 100%
+  );
+}
+
+@media (max-width: 768px) {
+  .fade-right {
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      black 0%,
+      black 40%,
+      transparent 80%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      black 0%,
+      black 40%,
+      transparent 80%,
+      transparent 100%
+    );
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+}
+
+/* Nav */
+.nav-link {
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.nav-link.active {
+  border-bottom: 2px solid #f3f3f3; /* blue underline */
+  scale: 1.1; /* slight zoom effect */
+}
+
+
+/* Blue custom scrollbar for WebKit browsers */
+::-webkit-scrollbar {
+  width: 10px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #2563eb 0%, #1e40af 100%);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #3b82f6 0%, #1e3a8a 100%);
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-button {
+  background: transparent;
+  height: 16px;
+  width: 16px;
+}
+
+::-webkit-scrollbar-button:single-button:decrement {
+  background: url("data:image/svg+xml;utf8,<svg width='16' height='16' xmlns='http://www.w3.org/2000/svg'><polygon points='8,4 12,10 4,10' fill='%232563eb'/></svg>") no-repeat center center;
+  background-size: 12px 12px;
+}
+::-webkit-scrollbar-button:single-button:increment {
+  background: url("data:image/svg+xml;utf8,<svg width='16' height='16' xmlns='http://www.w3.org/2000/svg'><polygon points='4,6 12,6 8,12' fill='%232563eb'/></svg>") no-repeat center center;
+  background-size: 12px 12px;
+}
+
+/* For Firefox */
+body, * {
+  scrollbar-width: thin;
+  scrollbar-color: #2563eb transparent;
+}
