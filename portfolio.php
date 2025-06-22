@@ -4,22 +4,20 @@ $projects = [
     'title' => 'Architectural Visualisation',
     'image' => 'images/bottle.jpg',
     'desc'  => 'Bringing spaces to life before they&apos;re built. Our architectural 3D visuals help bring spaces to life — before a single brick is laid. From sleek interiors to full-scale buildings, we create high-resolution renders that resonate with clients and stakeholders alike.',
-    'link'  => 'contact.php'
+    'link'  => 'architectural.php'
   ],
   [
     'title' => 'Product Visualisation',
     'image' => 'images/we_laura_parfum.jpeg',
     'desc' => 'Your product, beautifully imagined. We turn your physical products into stunning 3D visuals that look ready for launch. Whether it&apos;s for branding, e-commerce, or advertising, our renders are precise, realistic, and built to convert.',
-    'link'  => 'contact.php'
+    'link'  => 'productVisiual.php'
   ],
   [
     'title' => 'Gaming',
     'image' => 'images/bottle.jpg',
     'desc' => 'Built for worlds beyond reality. We create optimized, game-ready 3D models tailored to your creative vision — whether it’s a stylized racing car or a fully rigged character for a cinematic sequence.',
-    'link'  => 'contact.php'
+    'link'  => 'gaming.php'
   ]
-
-  // Add more projects as needed
 ];
 ?>
 <!DOCTYPE html>
