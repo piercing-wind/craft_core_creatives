@@ -8,46 +8,94 @@ document.addEventListener('DOMContentLoaded', function() {
     gsap.set('.hero-text', {
         fontWeight: isMobile ? 500 : 200,
         color: isMobile ? '#ffffff' : '#6b7280',
-        opacity: isMobile ? 1 : 0.7
+        opacity: isMobile ? 1 : 0,
+        scale: isMobile ? 0.95 : 0.85,
+        delay: isMobile ? 0 : 0.2,
     });
 
+    // On load: Animate visible hero-texts (in viewport)
     if (!isMobile) {
+        // Scroll-triggered zoom/slide (scrubbed, not toggled)
         document.querySelectorAll('.hero-text').forEach((text) => {
-            ScrollTrigger.create({
-                trigger: text,
-                start: "top 60%",
-                end: "bottom 50%",
-                onEnter: () => {
-                    gsap.set(text, {
-                        fontWeight: 500,
-                        color: '#ffffff',
-                        opacity: 1
-                    });
-                },
-                onLeave: () => {
-                    gsap.set(text, {
-                        fontWeight: 200,
-                        color: '#6b7280',
-                        opacity: 0.7
-                    });
-                },
-                onEnterBack: () => {
-                    gsap.set(text, {
-                        fontWeight: 500,
-                        color: '#ffffff',
-                        opacity: 1
-                    });
-                },
-                onLeaveBack: () => {
-                    gsap.set(text, {
-                        fontWeight: 200,
-                        color: '#6b7280',
-                        opacity: 0.7
-                    });
+            gsap.to(text, {
+                scale: 1,
+                y: 0,
+                opacity: 1,
+                fontWeight: 500,
+                color: '#ffffff',
+                scrollTrigger: {
+                    trigger: text,
+                    start: "top 65%",
+                    end: "bottom 35%",
+                    scrub: true,
+                    onUpdate: self => {
+                        // Map progress (0 to 1) to scale/y/opacity
+                        // When out of focus (top or bottom), zoom out and fade
+                        const p = self.progress;
+                        
+                        let fade = Math.cos((p - 0.5) * Math.PI) ** 2;
+                        let scale = 0.85 + 0.15 * fade; // 1 at center, 0.92 at ends
+                        let y = 40 * (1 - fade); // 0 at center, 40 at ends
+                        let weight = 200 + 300 * fade; // 500 at center, 200 at ends
+                        let color = fade > 0.5 ? "#ffffff" : "#6b7280";
+
+                        gsap.set(text, {
+                            scale: scale,
+                            y: y,
+                            opacity: fade,
+                            fontWeight: weight,
+                            color: color
+                        });
+                    }
                 }
             });
         });
     }
+
+
+      document.querySelectorAll('.hero-text').forEach((el, i) => {
+         if (isMobile) {
+            gsap.set(el, { y: 0, opacity: 1 });
+         } else {
+            gsap.set(el, { y: 40, opacity: 0 });
+            ScrollTrigger.create({
+                  trigger: el,
+                  start: "top 65%",
+                  end: "bottom 35%",
+                  onEnter: () => {
+                     gsap.to(el, {
+                        y: 0,
+                        opacity: 1,
+                        duration: 1.1,
+                        delay: 0.2 + i * 0.18, 
+                        ease: "power4.out"
+                     });
+                  },
+                  once: true 
+            });
+         }
+      });
+
+       //Hero Box
+       document.querySelectorAll('.hero-box').forEach((el, i) => {
+        if (isMobile) {
+            gsap.set(el, { y: 0, opacity: 1 });
+        } else {
+            gsap.set(el, { y: 60, opacity: 0 });
+            gsap.to(el, {
+                y: 0,
+                opacity: 1,
+                duration: 4,
+                delay: i * 0.15,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: el,
+                    start: "top 80%",
+                    toggleActions: "play none none none"
+                }
+            });
+        }
+    });
 
     // PROJECT CARD SLIDE ANIMATION
     document.querySelectorAll('.project-card').forEach(card => {

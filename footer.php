@@ -52,5 +52,8 @@
       </div>
 
    </section>
-    <p class="text-center text-xs py-8 border-t border-neutral-500">&copy; <?php echo date("Y"); ?> Craft Core Agency. All rights reserved.</p>
+   <div class="text-center text-xs py-8 border-t border-neutral-500 flex flex-col md:flex-row item-center justify-between px-4 md:px-8">
+      <p>&copy; <?php echo date("Y"); ?> Craft Core Agency. All rights reserved.</p> 
+      <p>Developed By <a href="https://byteswithbits.com" target="_blank" class="text-purple-600 font-semibold tracking-widest">BYTES WITH BITS</a></p>
+   </div>
 </footer>
