@@ -14,7 +14,6 @@ if ($currentProject && isset($currentProject['gallery_json'])) {
         $galleryData = json_decode(file_get_contents($jsonPath), true);
     }
 }
-// Get project data for dynamic content
 
 // Define page titles for SEO
 $pageTitles = [
@@ -119,7 +118,7 @@ $pageTitle = $pageTitles[$category] ?? ucfirst($category);
                         <img
                               src="<?= htmlspecialchars($img['src']) ?>"
                               alt="Gallery Big Image"
-                              class="w-full h-[calc(2*16rem+1.5rem)] object-cover rounded-xl"
+                              class="w-full h-[calc(2*16rem+1.5rem)] object-cover rounded-xl cursor-pointer gallery-img"
                               loading="lazy"
                         />
                      </div>
@@ -128,7 +127,7 @@ $pageTitle = $pageTitles[$category] ?? ucfirst($category);
                         <img
                               src="<?= htmlspecialchars($img['src']) ?>"
                               alt="Gallery Image"
-                              class="w-full h-64 object-cover rounded-xl"
+                              class="w-full h-64 object-cover rounded-xl cursor-pointer gallery-img"
                               loading="lazy"
                         />
                      </div>
@@ -137,9 +136,66 @@ $pageTitle = $pageTitles[$category] ?? ucfirst($category);
          </div>
       </div>
    </section>
+      <!-- Modal for fullscreen image -->
+   <div id="galleryModal" class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 hidden">
+      <button id="closeModal" class="absolute top-6 right-8 text-white text-4xl font-bold">x</button>
+      <button id="prevImg" class="absolute left-4 top-1/2 -translate-y-1/2 text-white text-4xl px-4 py-2 bg-black bg-opacity-40 rounded-full hover:bg-opacity-70">&#8592;</button>
+      <img id="modalImg" src="" alt="Gallery Fullscreen" class="max-h-[90vh] max-w-[90vw] rounded-xl shadow-2xl border-4 border-white" />
+      <button id="nextImg" class="absolute right-4 top-1/2 -translate-y-1/2 text-white text-4xl px-4 py-2 bg-black bg-opacity-40 rounded-full hover:bg-opacity-70">&#8594;</button>
+   </div>
 
    <?php include 'footer.php'; ?>
    <script src="js/script.js"></script>
    <script src="js/animations.js"></script>
+   <script>
+   // --- Gallery Modal Logic ---
+   const images = Array.from(document.querySelectorAll('.gallery-img'));
+   const modal = document.getElementById('galleryModal');
+   const modalImg = document.getElementById('modalImg');
+   const closeModal = document.getElementById('closeModal');
+   const prevBtn = document.getElementById('prevImg');
+   const nextBtn = document.getElementById('nextImg');
+   let currentIndex = 0;
+
+   function showModal(index) {
+      currentIndex = index;
+      modalImg.src = images[currentIndex].src;
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+   }
+
+   function hideModal() {
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+   }
+
+   function showNext() {
+      currentIndex = (currentIndex + 1) % images.length;
+      modalImg.src = images[currentIndex].src;
+   }
+
+   function showPrev() {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      modalImg.src = images[currentIndex].src;
+   }
+
+   images.forEach((img, idx) => {
+      img.addEventListener('click', () => showModal(idx));
+   });
+   closeModal.addEventListener('click', hideModal);
+   nextBtn.addEventListener('click', showNext);
+   prevBtn.addEventListener('click', showPrev);
+
+   // Optional: close modal on ESC or click outside image
+   modal.addEventListener('click', (e) => {
+      if (e.target === modal) hideModal();
+   });
+   document.addEventListener('keydown', (e) => {
+      if (modal.classList.contains('hidden')) return;
+      if (e.key === 'Escape') hideModal();
+      if (e.key === 'ArrowRight') showNext();
+      if (e.key === 'ArrowLeft') showPrev();
+   });
+   </script>
 </body>
 </html>
