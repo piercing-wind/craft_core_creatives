@@ -74,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <div class="max-w-6xl w-full mx-auto min-h-screen py-14 my-14 z-20 relative">
          <h2 class="text-7xl font-normal uppercase mb-8 slideup-text text-center">Contact</span></h2>
          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center justify-items-center mt-24 ">
-               <a href="https://wa.me/919914805333?text=Hello%20Craft%20Core%20Creatives%2C%20I%20am%20interested%20in%20discussing%20a%20design%20project.%20Could%20you%20please%20provide%20more%20information%20about%20your%20services%3F" 
+               <a href="https://wa.me/918699373633?text=Hello%20Craft%20Core%20Creatives%2C%20I%20am%20interested%20in%20discussing%20a%20design%20project.%20Could%20you%20please%20provide%20more%20information%20about%20your%20services%3F" 
                   class="w-full flex gap-4 justify-center text-center hover:text-blue-600 hover:scale-[1.05] transition-all duration-300 ease-in-out"
                   target="_blank" rel="noopener noreferrer" title="Contact us on Whatsapp" aria-label="Contact us on Whatsapp" aria-describedby="whatsapp-icon"
                   >
