@@ -151,32 +151,32 @@ if (isset($_POST['delete_image'])) {
             <div class="pt-4 text-center">
                 <a href="<?= $_SERVER['PHP_SELF'] ?>" class="text-blue-600 hover:underline">Logout & Return to Login</a>
             </div>
+            <!-- List Images in Folder with Delete Buttons -->
+             <div>
+                  <h2 class="text-xl font-semibold mt-6">Images in <?= ucfirst($selectedFolder) ?>:</h2>
+                  <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                  <?php
+                  $imageDir = "images/$selectedFolder/";
+                  $images = array_filter(scandir($imageDir), function ($file) {
+                     return preg_match('/\.(jpg|jpeg|png|gif|webp)$/i', $file);
+                  });
+                  foreach ($images as $img): ?>
+                     <div class="border rounded p-2 flex flex-col items-center">
+                        <img src="<?= "$imageDir$img" ?>" alt="<?= $img ?>" class="w-full h-32 object-cover rounded">
+                        <form method="post" class="mt-2">
+                              <input type="hidden" name="folder" value="<?= $selectedFolder ?>">
+                              <button type="submit" name="delete_image" value="<?= $img ?>"
+                                 class="bg-red-600 text-white px-2 py-1 rounded text-xs hover:bg-red-700">
+                                 Delete
+                              </button>
+                        </form>
+                     </div>
+                  <?php endforeach; ?>
+                  </div>
+             </div>
         <?php endif; ?>
     </div>
 
-   <!-- List Images in Folder with Delete Buttons -->
-    <div>
-         <h2 class="text-xl font-semibold mt-6">Images in <?= ucfirst($selectedFolder) ?>:</h2>
-         <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-         <?php
-         $imageDir = "images/$selectedFolder/";
-         $images = array_filter(scandir($imageDir), function ($file) {
-            return preg_match('/\.(jpg|jpeg|png|gif|webp)$/i', $file);
-         });
-         foreach ($images as $img): ?>
-            <div class="border rounded p-2 flex flex-col items-center">
-               <img src="<?= "$imageDir$img" ?>" alt="<?= $img ?>" class="w-full h-32 object-cover rounded">
-               <form method="post" class="mt-2">
-                     <input type="hidden" name="folder" value="<?= $selectedFolder ?>">
-                     <button type="submit" name="delete_image" value="<?= $img ?>"
-                        class="bg-red-600 text-white px-2 py-1 rounded text-xs hover:bg-red-700">
-                        Delete
-                     </button>
-               </form>
-            </div>
-         <?php endforeach; ?>
-         </div>
-    </div>
 
 </body>
 </html>
