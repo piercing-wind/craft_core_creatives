@@ -12,5 +12,10 @@
    <div class="w-full h-screen flex items-center justify-center">
       <h1 class="text-2xl">Comming Soon...</h1>
    </div>
+   
+   <footer class="text-center text-xs py-8 border-t border-neutral-500 flex flex-col md:flex-row item-center justify-between px-4 md:px-8">
+         <p>&copy; <?php echo date("Y"); ?> Craft Core Agency. All rights reserved.</p> 
+         <p>Developed By <a href="https://byteswithbits.com" target="_blank" class="text-purple-600 font-semibold tracking-widest">BYTES WITH BITS</a></p>
+   </footer>
    </body>
 </html>
