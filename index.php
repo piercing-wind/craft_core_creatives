@@ -4,9 +4,9 @@ include_once 'includes/project-data.php';
 $projects = getAllProjects();
 
 $stats = [
-    ['number' => '02', 'title' => 'Years', 'subtitle' => 'Experience'],
-    ['number' => '21', 'title' => 'Project', 'subtitle' => 'Completed'],
-    ['number' => '04', 'title' => 'Industry', 'subtitle' => 'Served']
+    ['number' => '01', 'title' => 'Years', 'subtitle' => 'Experience'],
+    ['number' => '33', 'title' => 'Project', 'subtitle' => 'Completed'],
+    ['number' => '03', 'title' => 'Industry', 'subtitle' => 'Served']
 ];
 
 $hero_text = ['We are', 'Craftcore', 'Creatives', 'A Design', 'Agency'];
