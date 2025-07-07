@@ -8,7 +8,6 @@ $error = '';
 $uploadMessage = '';
 $jsonMessage = '';
 $selectedFolder = $imageFolders[0];  // Default folder
-
 // Handle Password Submission
 if (isset($_POST['password'])) {
     if ($_POST['password'] === $password) {
@@ -25,6 +24,7 @@ if (isset($_POST['folder'])) {
 }
 
 // Handle Image Upload
+// Handle Image Upload
 if (isset($_POST['upload'], $_FILES['image'])) {
     $folder = basename($_POST['folder']);
     if (in_array($folder, $imageFolders)) {
@@ -32,6 +32,19 @@ if (isset($_POST['upload'], $_FILES['image'])) {
         $targetFile = $targetDir . basename($_FILES['image']['name']);
         if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFile)) {
             $uploadMessage = "Image uploaded successfully to <strong>$folder</strong>.";
+            $targetFileForJson = str_replace('\\', '/', $targetFile);
+            // --- Automatically append to JSON with pattern ---
+            $jsonFile = "gallery/{$folder}.json";
+            $jsonData = file_exists($jsonFile) ? json_decode(file_get_contents($jsonFile), true) : [];
+            // Determine the new index (1-based)
+            $newIndex = count($jsonData) + 1;
+            // Set size to "large" for every 4th, 10th, 16th, etc.
+            $size = (($newIndex - 4) % 6 === 0 && $newIndex >= 4) ? "large" : "normal";
+            $jsonData[] = [
+                "src" => $targetFileForJson,
+                "size" => $size
+            ];
+            file_put_contents($jsonFile, json_encode($jsonData));
         } else {
             $uploadMessage = "Failed to upload image.";
         }
@@ -65,7 +78,7 @@ if (isset($_POST['delete_image'])) {
         $uploadMessage = "Image not found.";
     }
 
-    // Optionally auto-remove from JSON:
+    // Auto-remove from JSON:
     $jsonFile = "gallery/{$folder}.json";
     if (file_exists($jsonFile)) {
         $jsonData = json_decode(file_get_contents($jsonFile), true);
@@ -75,8 +88,6 @@ if (isset($_POST['delete_image'])) {
         file_put_contents($jsonFile, json_encode(array_values($jsonData)));
     }
 }
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -133,9 +144,40 @@ if (isset($_POST['delete_image'])) {
             <form method="post" class="space-y-4 border-t pt-4">
                 <input type="hidden" name="folder" value="<?= $selectedFolder ?>">
                 <label class="block font-semibold">Edit Gallery JSON for <span class="font-bold text-blue-600"><?= ucfirst($selectedFolder) ?></span>:</label>
-                <textarea name="json" rows="15" class="w-full border border-gray-300 rounded p-2 font-mono text-sm"><?= htmlspecialchars($jsonContent) ?></textarea>
+
+                <textarea name="json" rows="15" class="w-full border border-gray-300 rounded p-2 font-mono text-sm"><?= file_exists($jsonFile) ? htmlspecialchars(file_get_contents($jsonFile)) : '[]' ?></textarea>
                 <button type="submit" name="saveJson" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">Save JSON</button>
-            </form>
+                
+               </form>
+               <span>Example of correct json</span>
+               <pre class="bg-gray-100 p-2 rounded text-sm font-mono">
+                 [
+                    { "src": "images/<?= $selectedFolder ?>/1.jpg", "size": "normal" },
+                    { "src": "images/<?= $selectedFolder ?>/2.jpg", "size": "normal" },
+                    { "src": "images/<?= $selectedFolder ?>/3.jpg", "size": "normal" },
+                    { "src": "images/<?= $selectedFolder ?>/4.jpg", "size": "large" }
+                 ]
+               </pre>  
+               <span>Example of In-correct json</span>
+               <pre class="bg-gray-100 p-2 rounded text-sm font-mono">
+                 [
+                    { "src": "images/<?= $selectedFolder ?>/1.jpg", "size": "normal" },
+                    { "src": "images/<?= $selectedFolder ?>/2.jpg", "size": "normal" },
+                    { "src": "images/<?= $selectedFolder ?>/3.jpg", "size": "normal" },
+                    { "src": "images/<?= $selectedFolder ?>/4.jpg", "size": "large" }, <- This comma will break the json 
+                 ]
+               </pre>  
+               
+               <p>Every large Image is + 6 from its postion</p>
+               <pre>
+                 4 + 6 = 10
+                 10 + 6 = 16
+                 16 + 6 = 22
+                 22 + 6 = 28
+                 28 + 6 = 34
+                 34 + 6 = 40 so on...
+               </pre>
+               <p><code>{"src":"images\/architectural\/1.jpeg","size":"normal"}</code> is same as (both will do the same job) <code>{"src":"images/architectural/1.jpeg","size":"normal"}</code></p>
 
             <!-- Change Folder -->
             <form method="post" class="pt-4 text-center">
