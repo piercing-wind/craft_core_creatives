@@ -89,7 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   </svg>
                   <p class="">Whatsapp</p>
                </a>
-               <a href="tel:+919914805333" 
+               <a href="tel:+918699373633" 
                   class="w-full flex gap-4 justify-center text-center hover:text-blue-600 hover:scale-[1.05] transition-all duration-300 ease-in-out"
                   target="_blank" rel="noopener noreferrer" title="Contact us on Phone" aria-label="Contact us on Phone" aria-describedby="Phone-icon"
                   >
@@ -99,7 +99,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                      width="20px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                      <path d="M67.317,81.952c-9.284-7.634-15.483-17.054-18.742-22.414l-2.431-4.583c0.85-0.912,7.332-7.853,10.141-11.619  c3.53-4.729-1.588-9-1.588-9S40.296,19.933,37.014,17.076c-3.282-2.861-7.06-1.272-7.06-1.272  c-6.898,4.457-14.049,8.332-14.478,26.968C15.46,60.22,28.705,78.216,43.028,92.148c14.346,15.734,34.043,31.504,53.086,31.486  c18.634-0.425,22.508-7.575,26.965-14.473c0,0,1.59-3.775-1.268-7.06c-2.86-3.284-17.265-17.688-17.265-17.688  s-4.268-5.119-8.998-1.586c-3.525,2.635-9.855,8.496-11.38,9.917C84.171,92.749,73.582,87.104,67.317,81.952z"/>
                   </svg>
-                  <p class="">+91 991 480 5333</p>
+                  <p class="">+91 869 937 3633</p>
                </a>
                <a href="mailto:info@craftcorecreatives.com" 
                   class="w-full flex gap-4 justify-center text-center hover:text-blue-600 hover:scale-[1.05] transition-all duration-300 ease-in-out"

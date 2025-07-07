@@ -163,6 +163,7 @@ if (isset($_POST['delete_image'])) {
                   foreach ($images as $img): ?>
                      <div class="border rounded p-2 flex flex-col items-center">
                         <img src="<?= "$imageDir$img" ?>" alt="<?= $img ?>" class="w-full h-32 object-cover rounded">
+                         <div class="mt-2 text-xs text-gray-700 font-semibold break-all"><?= htmlspecialchars($img) ?></div>
                         <form method="post" class="mt-2">
                               <input type="hidden" name="folder" value="<?= $selectedFolder ?>">
                               <button type="submit" name="delete_image" value="<?= $img ?>"
