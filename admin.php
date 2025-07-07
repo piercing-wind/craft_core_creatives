@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 // CONFIGURATION:
 $password = "CraftCoreCreatives-99";  // Your secret password
 $imageFolders = ["architectural", "productVisual", "gaming"];
@@ -177,7 +180,7 @@ if (isset($_POST['delete_image'])) {
                  28 + 6 = 34
                  34 + 6 = 40 so on...
                </pre>
-               <p><code>{"src":"images\/architectural\/1.jpeg","size":"normal"}</code> is same as (both will do the same job) <code>{"src":"images/architectural/1.jpeg","size":"normal"}</code></p>
+               <p><code>{"src":"images\/<?= $selectedFolder ?>\/1.jpeg","size":"normal"}</code> is same as (both will do the same job) <code>{"src":"images/<?= $selectedFolder ?>/1.jpeg","size":"normal"}</code></p>
 
             <!-- Change Folder -->
             <form method="post" class="pt-4 text-center">
