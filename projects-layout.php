@@ -111,13 +111,13 @@ $pageTitle = $pageTitles[$category] ?? ucfirst($category);
             </h2>
          <?php endif; ?>
          
-         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+         <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-6">
             <?php foreach($galleryData as $img): ?>
                <div>
                   <img
                      src="<?= htmlspecialchars($img['src']) ?>"
                      alt="Gallery Image"
-                     class="w-full h-48 object-cover rounded-lg border border-gray-800 bg-gray-900"
+                     class="w-full h-60 object-cover rounded-lg border border-gray-800 bg-gray-900"
                      loading="lazy"
                   />
                </div>
