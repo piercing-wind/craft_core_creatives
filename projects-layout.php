@@ -111,27 +111,16 @@ $pageTitle = $pageTitles[$category] ?? ucfirst($category);
             </h2>
          <?php endif; ?>
          
-         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6">
-            <?php foreach($galleryData as $i => $img): ?>
-                  <?php if (isset($img['size']) && $img['size'] === 'large'): // Big image at 4, 10, 16, ... ?>
-                     <div class="md:col-span-2 md:row-span-2">
-                        <img
-                              src="<?= htmlspecialchars($img['src']) ?>"
-                              alt="Gallery Big Image"
-                              class="w-full h-[calc(2*16rem+1.5rem)] object-cover rounded-xl cursor-pointer gallery-img"
-                              loading="lazy"
-                        />
-                     </div>
-                  <?php else: ?>
-                     <div>
-                        <img
-                              src="<?= htmlspecialchars($img['src']) ?>"
-                              alt="Gallery Image"
-                              class="w-full h-64 object-cover rounded-xl cursor-pointer gallery-img"
-                              loading="lazy"
-                        />
-                     </div>
-                  <?php endif; ?>
+         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+            <?php foreach($galleryData as $img): ?>
+               <div>
+                  <img
+                     src="<?= htmlspecialchars($img['src']) ?>"
+                     alt="Gallery Image"
+                     class="w-full h-48 object-cover rounded-lg border border-gray-800 bg-gray-900"
+                     loading="lazy"
+                  />
+               </div>
             <?php endforeach; ?>
          </div>
       </div>
@@ -147,55 +136,6 @@ $pageTitle = $pageTitles[$category] ?? ucfirst($category);
    <?php include 'footer.php'; ?>
    <script src="js/script.js"></script>
    <script src="js/animations.js"></script>
-   <script>
-   // --- Gallery Modal Logic ---
-   const images = Array.from(document.querySelectorAll('.gallery-img'));
-   const modal = document.getElementById('galleryModal');
-   const modalImg = document.getElementById('modalImg');
-   const closeModal = document.getElementById('closeModal');
-   const prevBtn = document.getElementById('prevImg');
-   const nextBtn = document.getElementById('nextImg');
-   let currentIndex = 0;
-
-   function showModal(index) {
-      currentIndex = index;
-      modalImg.src = images[currentIndex].src;
-      modal.classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-   }
-
-   function hideModal() {
-      modal.classList.add('hidden');
-      document.body.style.overflow = '';
-   }
-
-   function showNext() {
-      currentIndex = (currentIndex + 1) % images.length;
-      modalImg.src = images[currentIndex].src;
-   }
-
-   function showPrev() {
-      currentIndex = (currentIndex - 1 + images.length) % images.length;
-      modalImg.src = images[currentIndex].src;
-   }
-
-   images.forEach((img, idx) => {
-      img.addEventListener('click', () => showModal(idx));
-   });
-   closeModal.addEventListener('click', hideModal);
-   nextBtn.addEventListener('click', showNext);
-   prevBtn.addEventListener('click', showPrev);
-
-   // Optional: close modal on ESC or click outside image
-   modal.addEventListener('click', (e) => {
-      if (e.target === modal) hideModal();
-   });
-   document.addEventListener('keydown', (e) => {
-      if (modal.classList.contains('hidden')) return;
-      if (e.key === 'Escape') hideModal();
-      if (e.key === 'ArrowRight') showNext();
-      if (e.key === 'ArrowLeft') showPrev();
-   });
-   </script>
+   
 </body>
 </html>

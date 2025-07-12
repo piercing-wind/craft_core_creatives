@@ -57,23 +57,6 @@ $projects = [
     ],
     'works' => getImagesFromFolder('images/productVisual'),
     'gallery_json' => 'gallery/productVisual.json'
-  ],
-  [
-    'title' => 'Gaming',
-    'desc' => 'Built for worlds beyond reality. We create optimized, game-ready 3D models tailored to your creative vision — whether it\'s a stylized racing car or a fully rigged character for a cinematic sequence.',
-    'link'  => 'projects-layout.php?category=gaming',
-    'image-portfolio' => 'images/gaming-port.jpg',
-    'image-home' => 'images/gaming-home.jpg',
-    'category' => 'gaming',
-    'services' => [
-      'Character Modeling & Rigging',
-      'Environment & Level Design',
-      'Game Asset Creation',
-      'Texture & Shader Development',
-      'Animation & VFX'
-    ],
-    'works' => getImagesFromFolder('images/gaming'),
-    'gallery_json' => 'gallery/gaming.json'
   ]
 ];
 // Helper function to get all projects
