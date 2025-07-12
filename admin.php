@@ -21,6 +21,8 @@ if (isset($_POST['password'])) {
     }
 }
 
+   // change in
+   
 // Handle Folder Selection & Keep Selection Across Actions
 if (isset($_POST['folder'])) {
     $selectedFolder = basename($_POST['folder']);
